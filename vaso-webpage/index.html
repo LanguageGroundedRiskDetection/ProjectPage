@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Anonymous project page for VASO, a framework for formally verifiable self-evolving robot skills.">
+    <title>VASO: Formally Verifiable Self-Evolving Skills</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top">VASO</a>
+        <div class="nav-links">
+          <a href="#method">Method</a>
+          <a href="#videos">Videos</a>
+          <a href="#results">Results</a>
+          <a href="#resources">Resources</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Anonymous submission</p>
+          <h1>VASO: Formally Verifiable Self-Evolving Skills for Physical AI Agents</h1>
+          <p class="lead">
+            VASO closes the loop between formal verification and LLM-generated robot skills:
+            verifier counterexamples become textual optimization feedback for reusable skill
+            contracts, improving safety without fine-tuning model weights.
+          </p>
+          <div class="actions" aria-label="Project resources">
+            <a class="button primary" href="#method">View method</a>
+            <a class="button" href="#videos">Watch videos</a>
+            <a class="button" href="#resources">Code availability</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section abstract-section" aria-labelledby="abstract-title">
+        <div class="section-heading">
+          <p class="eyebrow">Abstract</p>
+          <h2 id="abstract-title">Trustworthy Skill Evolution</h2>
+        </div>
+        <p>
+          Reusable robot skills are becoming the basic units through which embodied agents turn
+          open-ended instructions into long-horizon physical behavior. While foundation models
+          have lowered the cost of creating these skills, the cost of trusting them remains high.
+          Existing skill-evolution loops refine skills through execution feedback, unit tests,
+          environment reward, or LLM self-critique, but these signals only provide trace-level
+          evidence.
+        </p>
+        <p>
+          VASO represents each skill as a semantic contract with a formal interface for model
+          checking and a planner-facing interface for executable behavior generation. When
+          verification fails, VASO translates the counterexample trace into a textual gradient
+          that updates the reusable skill contract while keeping foundation-model weights frozen.
+        </p>
+      </section>
+
+      <section id="method" class="section method-section" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2 id="method-title">Verification-Guided Automated Skill Optimization</h2>
+        </div>
+        <figure class="wide-figure">
+          <img src="Skill_Optimization/corl/figures/pipeline.png" alt="Overview of the VASO skill generation and verification pipeline.">
+          <figcaption>
+            A task prompt yields a reusable skill, skill-level verification filters logically
+            inconsistent contracts, plan-level verification checks induced behavior, and
+            counterexamples refine the skill contract.
+          </figcaption>
+        </figure>
+        <div class="steps" aria-label="VASO workflow">
+          <article>
+            <span>01</span>
+            <h3>Generate</h3>
+            <p>A foundation model proposes a reusable skill with a local rule and semantic contract.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Verify</h3>
+            <p>A model checker evaluates both skill-level feasibility and plan-level safety.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Refine</h3>
+            <p>Counterexample traces become textual gradients that update the skill contract.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="videos" class="section video-section" aria-labelledby="videos-title">
+        <div class="section-heading">
+          <p class="eyebrow">Real-Robot Videos</p>
+          <h2 id="videos-title">Ground and Aerial Platforms</h2>
+        </div>
+        <div class="video-grid">
+          <figure>
+            <video controls playsinline preload="metadata">
+              <source src="Skill_Optimization/videos/jackal_camera_view.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <strong>Clearpath Jackal.</strong>
+              Skill-induced behavior is checked against temporal safety specifications.
+            </figcaption>
+          </figure>
+          <figure>
+            <video controls playsinline preload="metadata">
+              <source src="Skill_Optimization/videos/drone.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <strong>PX4 quadcopter.</strong>
+              Velocity trajectories are refined through verifier feedback before execution.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section execution-section" aria-labelledby="execution-title">
+        <div class="section-heading">
+          <p class="eyebrow">Execution Figures</p>
+          <h2 id="execution-title">Running Examples</h2>
+        </div>
+        <div class="pdf-grid">
+          <figure>
+            <object
+              data="Skill_Optimization/corl/figures/jackal-exe.pdf"
+              type="application/pdf"
+              aria-label="Jackal execution examples PDF">
+              <a href="Skill_Optimization/corl/figures/jackal-exe.pdf">Open Jackal execution examples</a>
+            </object>
+            <figcaption>
+              <strong>Clearpath Jackal.</strong>
+              Real-world executions with multiple verifiable self-evolving skills.
+            </figcaption>
+          </figure>
+          <figure>
+            <object
+              data="Skill_Optimization/corl/figures/px4-exe.pdf"
+              type="application/pdf"
+              aria-label="PX4 execution example PDF">
+              <a href="Skill_Optimization/corl/figures/px4-exe.pdf">Open PX4 execution example</a>
+            </object>
+            <figcaption>
+              <strong>PX4 quadcopter.</strong>
+              A self-evolving skill and velocity-trajectory execution example.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="results" class="section results-section" aria-labelledby="results-title">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2 id="results-title">High Safety With Lightweight Optimization</h2>
+        </div>
+        <div class="metrics" aria-label="Key quantitative results">
+          <article>
+            <strong>97.2%</strong>
+            <span>formal-specification compliance</span>
+          </article>
+          <article>
+            <strong>&lt;100</strong>
+            <span>optimization samples per skill</span>
+          </article>
+          <article>
+            <strong>11</strong>
+            <span>temporal-logic specifications</span>
+          </article>
+          <article>
+            <strong>400</strong>
+            <span>generated plans evaluated</span>
+          </article>
+        </div>
+        <div class="figure-grid">
+          <figure>
+            <img src="Skill_Optimization/corl/figures/size-time-acc.png" alt="Comparison of safety score, training time, and sample usage across methods.">
+            <figcaption>Safety and efficiency comparison against representative baselines.</figcaption>
+          </figure>
+          <figure>
+            <img src="Skill_Optimization/corl/figures/gen.png" alt="Seen and unseen task performance comparison.">
+            <figcaption>Optimized skills generalize to unseen prompts from the same task families.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section figure-section" aria-labelledby="system-title">
+        <div class="section-heading">
+          <p class="eyebrow">System</p>
+          <h2 id="system-title">Semantic Contracts as the Optimization Target</h2>
+        </div>
+        <figure class="wide-figure">
+          <img src="Skill_Optimization/corl/figures/vaso.png" alt="Detailed VASO system diagram showing plan verification and semantic contract refinement.">
+          <figcaption>
+            VASO optimizes the skill representation itself rather than a one-off plan, a flat
+            planner prompt, or hidden model parameters.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="resources" class="section resources-section" aria-labelledby="resources-title">
+        <div class="section-heading">
+          <p class="eyebrow">Resources</p>
+          <h2 id="resources-title">Paper, Code, and Citation</h2>
+        </div>
+        <div class="resource-list">
+          <article>
+            <h3>Paper</h3>
+            <p>The anonymous paper PDF will be linked here when the submission package is ready.</p>
+          </article>
+          <article>
+            <h3>Code</h3>
+            <p>We will make the code public after acceptance due to the anonymity policy.</p>
+          </article>
+          <article>
+            <h3>BibTeX</h3>
+            <p>Citation information will be added after publication details are available.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Anonymous project page for VASO.</p>
+    </footer>
+  </body>
+</html>
